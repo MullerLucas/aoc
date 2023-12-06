@@ -2,32 +2,44 @@
 #include <iostream>
 #include <array>
 
-#include <aoc/day_1.cpp>
+#include <aoc/solution_1_1.cpp>
+#include <aoc/solution_1_2.cpp>
 
 
 namespace aoc
 {
-    const std::array<std::function<void()>, 1> days {
-        run_day_1,
-    };
 
-    void run_day(usize idx)
-    {
-        std::cerr << "-------------[Day " << idx + 1 << "]-----------------" << "\n";
-        days[idx]();
-        std::cerr << "-------------------------------------" << std::endl;
-    }
+// ----------------------------------------------
+
+#define R(day) { solve_##day##_1, solve_##day##_2 }
+
+const std::array<std::array<std::function<void()>, 2>, 25> days {{
+    R(1),
+}};
+
+void solve_day(usize day)
+{
+    const auto d = days[day-1];
+    std::cerr << "----------[ Day " << day << " ]----------" << "\n";
+    std::cerr << ":: Part 1 ::\n";
+    if (d[0]) { d[0](); }
+    std::cerr << "\n:: Part 2 ::\n";
+    if (d[1]) { d[1](); }
+    std::cerr << "----------------------------" << "\n";
 }
+
+}
+
+// ----------------------------------------------
 
 int main()
 {
-    using namespace aoc;
+    constexpr usize day = 1;
 
     std::cout << "Advent of Code - 2023" << std::endl;
-
-    for (usize i = 0; i < aoc::days.size(); ++i) {
-        aoc::run_day(i);
-    }
+    aoc::solve_day(day);
 
     return 0;
 }
+
+// ----------------------------------------------

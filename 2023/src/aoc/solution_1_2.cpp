@@ -24,6 +24,8 @@ static const std::array<std::array<std::string_view, 2>, 10> PATTERNS = {{
     {"9", "nine"},
 }};
 
+// ----------------------------------------------
+
 static std::optional<i32> match_pattern(const std::string& line, usize start)
 {
     for (usize i = 0; i < PATTERNS.size(); ++i) {
@@ -47,7 +49,9 @@ static std::optional<i32> match_pattern(const std::string& line, usize start)
     return std::nullopt;
 }
 
-void run_day_1() {
+// ----------------------------------------------
+
+void solve_1_2() {
     std::ifstream file;
     file.open("resources/input_1_1.txt");
     assert(file.is_open() && "Failed to open file");
@@ -85,5 +89,7 @@ void run_day_1() {
 
     file.close();
 }
+
+// ----------------------------------------------
 
 }
