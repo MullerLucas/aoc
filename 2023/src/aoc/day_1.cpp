@@ -1,17 +1,57 @@
-#include <array>
 #include <cassert>
+#include <cctype>
 #include <fstream>
+#include <optional>
 #include <string>
 #include <iostream>
-#include <optional>
+#include <array>
 
 #include <hell/common.h>
-#include <string_view>
+
+// ----------------------------------------------
 
 namespace aoc
 {
 
-static const std::array<std::array<std::string_view, 2>, 10> PATTERNS = {{
+void solve_1_1()
+{
+    std::ifstream file;
+    file.open("resources/input_1_1.txt");
+    assert(file.is_open() && "Failed to open file");
+
+    std::string line;
+    i32 sum = 0;
+
+    while (std::getline(file, line)) {
+        if (line.empty()) { continue; }
+
+        usize left = 0;
+        while (!isdigit(line[left])) {
+            ++left;
+        }
+
+        usize right = line.size()-1;
+        while (!isdigit(line[right])) {
+            --right;
+        }
+
+        sum += ((line[left] - '0') * 10) + (line[right] - '0');
+    }
+
+    std::cout << "Sum: " << sum << std::endl;
+
+    file.close();
+}
+
+}
+
+// ----------------------------------------------
+
+
+namespace aoc
+{
+
+static const std::array<std::array<std::string_view, 2>, 10> k_patterns = {{
     {"0", "zero"},
     {"1", "one"},
     {"2", "two"},
@@ -24,12 +64,10 @@ static const std::array<std::array<std::string_view, 2>, 10> PATTERNS = {{
     {"9", "nine"},
 }};
 
-// ----------------------------------------------
-
 static std::optional<i32> match_pattern(const std::string& line, usize start)
 {
-    for (usize i = 0; i < PATTERNS.size(); ++i) {
-        for (const auto& pat : PATTERNS[i]) {
+    for (usize i = 0; i < k_patterns.size(); ++i) {
+        for (const auto& pat : k_patterns[i]) {
             if ((line.size() - start) < pat.size()) { continue; }
 
             bool matches = true;
@@ -48,8 +86,6 @@ static std::optional<i32> match_pattern(const std::string& line, usize start)
 
     return std::nullopt;
 }
-
-// ----------------------------------------------
 
 void solve_1_2() {
     std::ifstream file;
@@ -90,6 +126,5 @@ void solve_1_2() {
     file.close();
 }
 
-// ----------------------------------------------
-
 }
+// ----------------------------------------------
