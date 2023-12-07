@@ -16,7 +16,7 @@ namespace aoc
 
 const std::array<std::array<std::function<void()>, 2>, 25> days {{
     { solve_1_1, solve_1_2 },
-    { solve_2_1, nullptr },
+    { solve_day_2, nullptr },
 }};
 
 void solve_day(usize day)

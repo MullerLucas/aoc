@@ -1,6 +1,8 @@
 #include <cstddef>
 #include <cstdint>
 
+// ----------------------------------------------
+
 typedef std::int8_t     i8;
 typedef std::int16_t    i16;
 typedef std::int32_t    i32;
@@ -12,3 +14,8 @@ typedef std::uint32_t   u32;
 typedef std::uint64_t   u64;
 
 typedef std::size_t     usize;
+
+
+// ----------------------------------------------
+
+#define ARRAY_SIZE(arr) sizeof(arr) / sizeof(arr[0])
