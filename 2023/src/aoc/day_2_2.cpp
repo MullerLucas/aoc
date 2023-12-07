@@ -16,7 +16,7 @@ struct Limit {
 };
 
 static void parse_combination(std::unordered_map<std::string_view, usize>& maxes,
-                             std::string_view combi)
+                              std::string_view combi)
 {
     std::string_view token = combi.substr(0, combi.find(" "));
     usize number = std::stoi(token.data());
@@ -56,7 +56,7 @@ static bool round_within_limits(const Limit limits[], usize size,
     return true;
 }
 
-void solve_day_2()
+void solve_2_2()
 {
     const Limit limits[3] = {
         { "red", 12 },
@@ -66,7 +66,7 @@ void solve_day_2()
     std::unordered_map<std::string_view, usize> maxes {};
 
     std::ifstream file;
-    file.open("resources/input_2_1.txt");
+    file.open("resources/input_2_2.txt");
     assert(file.is_open() && "Failed to open file");
 
     std::string buf;

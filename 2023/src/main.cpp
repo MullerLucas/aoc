@@ -2,9 +2,7 @@
 #include <functional>
 #include <iostream>
 #include <array>
-
-#include <aoc/day_1.cpp>
-#include <aoc/day_2.cpp>
+#include <hell/common.h>
 
 
 namespace aoc
@@ -12,11 +10,18 @@ namespace aoc
 
 // ----------------------------------------------
 
+void solve_1_1();
+void solve_1_2();
+void solve_2_1();
+void solve_2_2();
+
+// ----------------------------------------------
+
 #define R(day) { solve_##day##_1, solve_##day##_2 }
 
 const std::array<std::array<std::function<void()>, 2>, 25> days {{
     { solve_1_1, solve_1_2 },
-    { solve_day_2, nullptr },
+    { solve_1_2, solve_2_2 },
 }};
 
 void solve_day(usize day)
