@@ -14,6 +14,7 @@ void solve_1_1();
 void solve_1_2();
 void solve_2_1();
 void solve_2_2();
+void solve_3_1();
 
 // ----------------------------------------------
 
@@ -21,7 +22,8 @@ void solve_2_2();
 
 const std::array<std::array<std::function<void()>, 2>, 25> days {{
     { solve_1_1, solve_1_2 },
-    { solve_1_2, solve_2_2 },
+    { solve_2_1, solve_2_2 },
+    { solve_3_1, nullptr },
 }};
 
 void solve_day(usize day)
@@ -50,7 +52,7 @@ void solve_day(usize day)
 
 int main()
 {
-    constexpr usize day = 2;
+    constexpr usize day = 3;
 
     aoc::solve_day(day);
 
