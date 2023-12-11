@@ -19,6 +19,7 @@ i64 solve_2_2(std::ifstream&& file);
 i64 solve_3_1(std::ifstream&& file);
 i64 solve_3_2(std::ifstream&& file);
 i64 solve_4_1(std::ifstream&& file);
+i64 solve_4_2(std::ifstream&& file);
 
 // ----------------------------------------------
 
@@ -28,7 +29,7 @@ const std::array<std::array<std::function<i64(std::ifstream&&)>, 2>, 25> days {{
     { solve_1_1, solve_1_2 },
     { solve_2_1, solve_2_2 },
     { solve_3_1, solve_3_2 },
-    { solve_4_1, nullptr },
+    { solve_4_1, solve_4_2 },
 }};
 
 void solve_day(usize day, bool use_example)
