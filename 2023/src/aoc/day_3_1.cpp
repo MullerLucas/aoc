@@ -11,7 +11,7 @@
 namespace aoc
 {
 
-bool is_symbol(const std::vector<std::string>& schema, i64 x, i64 y)
+static bool is_symbol(const std::vector<std::string>& schema, i64 x, i64 y)
 {
     if (y < 0 || y >= static_cast<i64>(schema.size()))       { return false; }
     if (x < 0 || x >= static_cast<i64>(schema.at(y).size())) { return false; }
@@ -19,7 +19,7 @@ bool is_symbol(const std::vector<std::string>& schema, i64 x, i64 y)
     return !std::isdigit(c) && (c != '.');
 }
 
-bool is_part_number(const std::vector<std::string>& schema, usize x_start,
+static bool is_part_number(const std::vector<std::string>& schema, usize x_start,
                     usize y_start, usize len)
 {
     i64 x_left  = static_cast<i64>(x_start) - 1;
@@ -44,7 +44,7 @@ bool is_part_number(const std::vector<std::string>& schema, usize x_start,
            is_symbol(schema, x_right, y_start);
 }
 
-i32 parse_part_numbers(const std::vector<std::string>& schema)
+static i32 parse_part_numbers(const std::vector<std::string>& schema)
 {
     i32 result = 0;
 

@@ -15,6 +15,7 @@ void solve_1_2();
 void solve_2_1();
 void solve_2_2();
 void solve_3_1();
+void solve_3_2();
 
 // ----------------------------------------------
 
@@ -23,7 +24,7 @@ void solve_3_1();
 const std::array<std::array<std::function<void()>, 2>, 25> days {{
     { solve_1_1, solve_1_2 },
     { solve_2_1, solve_2_2 },
-    { solve_3_1, nullptr },
+    { solve_3_1, solve_3_2 },
 }};
 
 void solve_day(usize day)
