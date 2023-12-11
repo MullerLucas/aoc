@@ -56,7 +56,7 @@ static bool round_within_limits(const Limit limits[], usize size,
     return true;
 }
 
-void solve_2_2()
+i64 solve_2_2(std::ifstream&& file)
 {
     const Limit limits[3] = {
         { "red", 12 },
@@ -64,10 +64,6 @@ void solve_2_2()
         { "blue", 14 },
     };
     std::unordered_map<std::string_view, usize> maxes {};
-
-    std::ifstream file;
-    file.open("resources/input_2_2.txt");
-    assert(file.is_open() && "Failed to open file");
 
     std::string buf;
     usize limit_result = 0;
@@ -123,10 +119,9 @@ void solve_2_2()
         }
     }
 
-    file.close();
-
     std::cout << "Limits: " << limit_result << "\n"
               << "Maxes: " << maxes_result << std::endl;
+    return maxes_result;
 }
 
 }

@@ -11,14 +11,10 @@
 namespace aoc
 {
 
-void solve_1_1()
+i64 solve_1_1(std::ifstream&& file)
 {
-    std::ifstream file;
-    file.open("resources/input_1_1.txt");
-    assert(file.is_open() && "Failed to open file");
-
     std::string line;
-    i32 sum = 0;
+    i64 result = 0;
 
     while (std::getline(file, line)) {
         if (line.empty()) { continue; }
@@ -33,12 +29,10 @@ void solve_1_1()
             --right;
         }
 
-        sum += ((line[left] - '0') * 10) + (line[right] - '0');
+        result += ((line[left] - '0') * 10) + (line[right] - '0');
     }
 
-    std::cout << "Sum: " << sum << std::endl;
-
-    file.close();
+    return result;
 }
 
 }

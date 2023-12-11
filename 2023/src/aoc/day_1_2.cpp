@@ -48,13 +48,10 @@ static std::optional<i32> match_pattern(const std::string& line, usize start)
     return std::nullopt;
 }
 
-void solve_1_2() {
-    std::ifstream file;
-    file.open("resources/input_1_1.txt");
-    assert(file.is_open() && "Failed to open file");
-
+i64 solve_1_2(std::ifstream&& file)
+{
     std::string line;
-    i32 sum = 0;
+    i64 result = 0;
 
     while (std::getline(file, line)) {
         if (line.size() < 2) { continue; }
@@ -79,12 +76,10 @@ void solve_1_2() {
         assert(right_val.has_value() && "Right number not found");
 
         i32 val = *left_val * 10 + *right_val;
-        sum += val;
+        result += val;
     }
 
-    std::cout << "Sum: " << sum << std::endl;
-
-    file.close();
+    return result;
 }
 
 }

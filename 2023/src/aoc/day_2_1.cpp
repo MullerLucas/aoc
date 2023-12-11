@@ -68,7 +68,7 @@ static bool round_is_valid(const std::unordered_map<std::string_view, usize>& co
     return true;
 }
 
-void solve_2_1()
+i64 solve_2_1(std::ifstream&& file)
 {
     const Condition c[3] = {
         { "red", 12 },
@@ -76,10 +76,6 @@ void solve_2_1()
         { "blue", 14 },
     };
     const auto cond = create_conditions(c, ARRAY_SIZE(c));
-
-    std::ifstream file;
-    file.open("resources/input_2_1.txt");
-    assert(file.is_open() && "Failed to open file");
 
     std::string buf;
     usize result = 0;
@@ -118,9 +114,7 @@ void solve_2_1()
         }
     }
 
-    file.close();
-
-    std::cout << result << std::endl;
+    return result;
 }
 
 }

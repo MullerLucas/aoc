@@ -74,13 +74,8 @@ static i32 parse_part_numbers(const std::vector<std::string>& schema)
     return result;
 }
 
-void solve_3_1()
+i64 solve_3_1(std::ifstream&& file)
 {
-    std::ifstream file;
-    // file.open("resources/example_3_1.txt");
-    file.open("resources/input_3_1.txt");
-    assert(file.is_open() && "Failed to open file");
-
     std::vector<std::string> schema;
     std::string line;
 
@@ -89,10 +84,8 @@ void solve_3_1()
         schema.emplace_back(line);
     }
 
-    i32 result = parse_part_numbers(schema);
-    std::cout << result << std::endl;
-
-    file.close();
+    i64 result = parse_part_numbers(schema);
+    return result;
 }
 
 }
